@@ -48,7 +48,7 @@ class PrivateTagsApiTests(TestCase):
         self.assertEqual(res.data, serializer.data)
 
     def test_tags_limited_to_user(self):
-        """Test that tags returned are for the authenticated user"""
+        """Test that the tags returned are for the authenticated user"""
         user2 = get_user_model().objects.create_user(
             'other@londonappdev.com',
             'testpass'
@@ -74,7 +74,7 @@ class PrivateTagsApiTests(TestCase):
         self.assertTrue(exists)
 
     def test_create_tag_invalid(self):
-        """Test creating a new tag with invalid payload"""
+        """Test creating a new tag with an invalid payload"""
         payload = {'name': ''}
         res = self.client.post(TAGS_URL, payload)
 

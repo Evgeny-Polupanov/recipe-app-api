@@ -3,7 +3,7 @@ from core.models import Tag, Ingredient, Recipe
 
 
 class TagSerializer(serializers.ModelSerializer):
-    """Serializer for tag objects"""
+    """A serializer for tag objects"""
 
     class Meta:
         model = Tag
@@ -12,7 +12,7 @@ class TagSerializer(serializers.ModelSerializer):
 
 
 class IngredientSerializer(serializers.ModelSerializer):
-    """Serializer for ingredient objects"""
+    """A serializer for ingredient objects"""
 
     class Meta:
         model = Ingredient
@@ -45,7 +45,7 @@ class RecipeDetailSerializer(RecipeSerializer):
 
 
 class RecipeImageSerializer(serializers.ModelSerializer):
-    """Serializer for uploading images to recipes"""
+    """A serializer for uploading images to recipes"""
 
     class Meta:
         model = Recipe

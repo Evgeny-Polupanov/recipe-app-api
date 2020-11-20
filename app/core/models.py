@@ -9,7 +9,7 @@ import os
 
 
 def recipe_image_file_path(instance, filename):
-    """Generate file path for new recipe image"""
+    """Generate a file path for a new recipe image"""
     ext = filename.split('.')[-1]
     filename = f'{uuid.uuid4()}.{ext}'
     return os.path.join('uploads/recipe/', filename)
@@ -37,7 +37,7 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser, PermissionsMixin):
-    """Custom user model that supports using email instead of username"""
+    """A custom user model that supports using an email instead of a username"""
     email = models.EmailField(max_length=255, unique=True)
     name = models.CharField(max_length=255)
     is_active = models.BooleanField(default=True)
@@ -49,7 +49,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 
 class Tag(models.Model):
-    """Tag to be used for a recipe"""
+    """A tag to be used for a recipe"""
     name = models.CharField(max_length=255)
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
@@ -61,7 +61,7 @@ class Tag(models.Model):
 
 
 class Ingredient(models.Model):
-    """Ingredient to be used in a recipe"""
+    """An ingredient to be used in a recipe"""
     name = models.CharField(max_length=255)
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
@@ -73,7 +73,7 @@ class Ingredient(models.Model):
 
 
 class Recipe(models.Model):
-    """Recipe object"""
+    """The recipe object"""
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE

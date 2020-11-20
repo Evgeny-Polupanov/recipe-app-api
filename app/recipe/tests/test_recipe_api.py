@@ -19,7 +19,7 @@ def image_upload_url(recipe_id):
 
 
 def detail_url(recipe_id):
-    """Return recipe detail URL"""
+    """Return a recipe detail URL"""
     return reverse('recipe:recipe-detail', args=[recipe_id])
 
 
@@ -82,7 +82,7 @@ class PrivateRecipeApiTests(TestCase):
         self.assertEqual(res.data, serializer.data)
 
     def test_recipes_limited_to_user(self):
-        """Test retrieving recipes for user"""
+        """Test retrieving recipes for the user"""
         user2 = get_user_model().objects.create_user(
             'other@londonappdev.com'
             'password123'
@@ -111,7 +111,7 @@ class PrivateRecipeApiTests(TestCase):
         self.assertEqual(res.data, serializer.data)
 
     def test_create_basic_recipe(self):
-        """Test creating recipe"""
+        """Test creating a recipe"""
         payload = {
             'title': 'Chocolate cheesecake',
             'time_minutes': 30,
@@ -144,7 +144,7 @@ class PrivateRecipeApiTests(TestCase):
         self.assertIn(tag2, tags)
 
     def test_create_recipe_with_ingredient(self):
-        """Test creating recipe with ingredients"""
+        """Test creating a recipe with ingredients"""
         ingredient1 = sample_ingredient(user=self.user, name='Prawns')
         ingredient2 = sample_ingredient(user=self.user, name='Ginger')
         payload = {
@@ -213,7 +213,7 @@ class RecipeImageUploadTests(TestCase):
         self.recipe.image.delete()
 
     def test_upload_image_to_recipe(self):
-        """Test of uploading an image to recipe"""
+        """Test of uploading an image to the recipe"""
         url = image_upload_url(self.recipe.id)
         with tempfile.NamedTemporaryFile(suffix='.jpg') as ntf:
             img = Image.new('RGB', (10, 10))

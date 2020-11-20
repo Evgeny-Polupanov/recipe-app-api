@@ -31,7 +31,7 @@ class ModelTests(TestCase):
         self.assertEqual(user.email, email.lower())
 
     def test_new_user_invalid_email(self):
-        """Test creating user with no email raises error"""
+        """Test creating a user with no email raises error"""
         with self.assertRaises(ValueError):
             get_user_model().objects.create_user(None, 'test123')
 
@@ -76,7 +76,7 @@ class ModelTests(TestCase):
 
     @patch('uuid.uuid4')
     def test_recipe_file_name_uuid(self, mock_uuid):
-        """Test that image is saved in the correct location"""
+        """Test that the image is saved in the correct location"""
         uuid = 'test-uuid'
         mock_uuid.return_value = uuid
         file_path = models.recipe_image_file_path(None, 'myimage.jpg')
